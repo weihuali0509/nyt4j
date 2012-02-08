@@ -1,0 +1,199 @@
+/**
+ * 
+ */
+package com.downes.nyt4j;
+
+import static com.downes.nyt4j.JSONParseUtil.getBooleanAsInt;
+import static com.downes.nyt4j.JSONParseUtil.getRawString;
+
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * @author JohnGalt
+ * 
+ */
+public class ArticleImpl implements Article {
+
+  private String articleAbstract;
+  private String author;
+  private String body;
+  private String byline;
+  private List<Facet> classifiersFacet;
+  private List<Facet> columnFacet;
+  public boolean hasComments;
+  public String getDate;
+  public Facet getDayOfWeekFacet;
+  public Facet getDesFacet;
+  public boolean getFee;
+  public Facet getGeoFacet;
+  public String getLeadParagraph;
+  public Facet getMaterialTypeFacet;
+
+  JSONObject json;
+
+  public ArticleImpl(JSONObject json) throws JSONException {
+    this.json = new JSONObject(json.toString());
+    parse();
+  }
+
+  private void parse() throws JSONException {
+    System.out.println(json);
+    articleAbstract = getRawString("body", json);
+    author = getRawString("author", json);
+    body = getRawString("body", json);
+    byline = getRawString("byline", json);
+    classifiersFacet = null;
+    columnFacet = null;
+    if (hasComments = getBooleanAsInt("comments", json) == -1) {
+      hasComments = false;
+    }
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getAbstract()
+   */
+  @Override
+  public String getAbstract() {
+    return articleAbstract;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getAuthor()
+   */
+  @Override
+  public String getAuthor() {
+    return author;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getBody()
+   */
+  @Override
+  public String getBody() {
+    return body;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getByline()
+   */
+  @Override
+  public String getByline() {
+    return byline;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getClassifiersFacet()
+   */
+  @Override
+  public List<Facet> getClassifiersFacet() {
+    return classifiersFacet;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getColumnFacet()
+   */
+  @Override
+  public List<Facet> getColumnFacet() {
+    return columnFacet;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#hasComments()
+   */
+  @Override
+  public boolean hasComments() {
+    return hasComments;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getDate()
+   */
+  @Override
+  public String getDate() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getDayOfWeekFacet()
+   */
+  @Override
+  public Facet getDayOfWeekFacet() {
+    return null;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getDesFacet()
+   */
+  @Override
+  public Facet getDesFacet() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getFee()
+   */
+  @Override
+  public boolean getFee() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getGeoFacet()
+   */
+  @Override
+  public Facet getGeoFacet() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getLeadParagraph()
+   */
+  @Override
+  public String getLeadParagraph() {
+    return body;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.downes.nyt4j.Article#getMaterialTypeFacet()
+   */
+  @Override
+  public Facet getMaterialTypeFacet() {
+    return null;
+  }
+
+}

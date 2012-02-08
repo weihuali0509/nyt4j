@@ -1,0 +1,83 @@
+package com.downes.nyt4j;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class JSONParseUtil {
+
+  public static List<JSONObject> JSONArrayToList(JSONArray array) {
+    List<JSONObject> json = new ArrayList<JSONObject>();
+    try {
+      for (int i = 0; i < array.length(); i++) {
+        json.add(array.getJSONObject(i));
+      }
+    } catch (JSONException e) {
+      return null;
+    }
+    return json;
+  }
+
+  public static int getInt(String key, JSONObject json) {
+    if (null == json)
+      System.out.println("yup");
+    try {
+      if (json.isNull(key)) {
+        return -1;
+      } else {
+        return json.getInt(key);
+      }
+    } catch (JSONException e) {
+      return -1;
+    }
+  }
+
+  public static long getLong(String key, JSONObject json) {
+    try {
+      if (json.isNull(key)) {
+        return -1;
+      } else {
+        return json.getLong(key);
+      }
+    } catch (JSONException e) {
+      return -1;
+    }
+  }
+
+  public static String getRawString(String key, JSONObject json) {
+    try {
+      if (json.isNull(key)) {
+        return null;
+      } else {
+        return json.getString(key);
+      }
+    } catch (JSONException e) {
+      return null;
+    }
+  }
+
+  public static JSONArray getJSONArray(String key, JSONObject json) {
+    try {
+      if (json.isNull(key)) {
+        return null;
+      } else {
+        return json.getJSONArray(key);
+      }
+    } catch (JSONException e) {
+      return null;
+    }
+  }
+
+  public static int getBooleanAsInt(String key, JSONObject json) {
+    try {
+      if (!json.isNull(key)) {
+        return Integer.valueOf(json.getString(key));
+      }
+    } catch (JSONException e) {
+    }
+    return -1;
+  }
+}
