@@ -1,22 +1,22 @@
-package com.downes.nyt4j;
-
-//import java.net.MalformedURLException;
-//import java.net.URL;
-//import java.util.ArrayList;
-//import java.util.List;
+// Copyright 2012 Chris Downes. 
 //
-//import org.json.JSONException;
-//import org.json.JSONObject;
-//import org.omg.CORBA.RepositoryIdHelper;
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// //////////////////////////////////////////////////////////////////////////////
+package com.downes.nyt4j;
 
 public class NYTArticleSearch {
 
   private NYTAPIKey nytApiKey;
-
-  // private static String ARTICLE_SEARCH_BASE_URL = "http://api.nytimes.com/svc/search/v1/article";
-  // private JSONObject responseJSON;
-
-  // private ArticleSearchResult articleSearchResult;
 
   public NYTArticleSearch(String key) {
     nytApiKey = new NYTAPIKey(key);
@@ -29,23 +29,4 @@ public class NYTArticleSearch {
   public ArticleSearchQuery newQuery() {
     return new ArticleSearchQueryImpl(nytApiKey);
   }
-
-  // public ArticleSearchResult search(ArticleSearchQueryImpl query) {
-  // try {
-  // URL url = new URL(ARTICLE_SEARCH_BASE_URL + query.toURLString() + "&api-key=" +
-  // nytApiKey.getKey());
-  // System.out.println(url.toString());
-  // HttpRequest request = new HttpRequest(url);
-  // try {
-  // responseJSON = new JSONObject(request.getResponseAsString());
-  // System.out.println(responseJSON.toString());
-  // articleSearchResult = new JSONFactoryImpl().articleSearchResultFromJSON(responseJSON);
-  // } catch (JSONException e) {
-  // e.printStackTrace();
-  // }
-  // } catch (MalformedURLException e1) {
-  // e1.printStackTrace();
-  // }
-  // return articleSearchResult;
-  // }
 }
