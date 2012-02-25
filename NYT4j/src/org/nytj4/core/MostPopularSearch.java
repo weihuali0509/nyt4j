@@ -22,7 +22,7 @@ import java.net.URL;
  * http://api.nytimes.com/svc/mostpopular/{version}/{resource-type}/{section}[/share-types]/{time-
  * period}[.response-format]?api-key={your-API-key}
  * 
- * @author cdownes
+ * @author Chris Downes
  * 
  */
 public class MostPopularSearch {

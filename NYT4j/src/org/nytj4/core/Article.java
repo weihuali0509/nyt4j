@@ -46,6 +46,4 @@ public interface Article {
 
   Facet getMaterialTypeFacet();
 
-  // public ? getMultimedia();
-
 }
