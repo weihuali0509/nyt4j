@@ -46,16 +46,15 @@ public class ArticleSearchQueryImpl implements ArticleSearchQuery {
 
   private ArticleSearchResponse query(URL url) {
     System.out.println(url.toString());
-    ArticleSearchResponse searchResult;
+    ArticleSearchResponse searchResult = null;
     try {
       responseJSON = new JSONObject(HttpRequest.request(url));
       System.out.println(responseJSON.toString());
-      if (responseJSON == null) {
-        System.out.println("null");
+      if (null != responseJSON) {
+        searchResult = new JSONFactoryImpl().searchResponseFromJSON(responseJSON);
       }
-      searchResult = new JSONFactoryImpl().searchResponseFromJSON(responseJSON);
     } catch (JSONException e) {
-      searchResult = null;
+      e.printStackTrace();
     }
     return searchResult;
   }

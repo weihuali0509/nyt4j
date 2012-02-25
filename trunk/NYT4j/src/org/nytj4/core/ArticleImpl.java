@@ -23,7 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * @author JohnGalt
+ * @author Chris Downes
  * 
  */
 public class ArticleImpl implements Article {

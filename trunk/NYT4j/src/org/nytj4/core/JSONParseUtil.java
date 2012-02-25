@@ -36,8 +36,6 @@ public class JSONParseUtil {
   }
 
   public static int getInt(String key, JSONObject json) {
-    if (null == json)
-      System.out.println("yup");
     try {
       if (json.isNull(key)) {
         return -1;
